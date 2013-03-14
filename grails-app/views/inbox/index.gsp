@@ -15,7 +15,6 @@
             <th>Stuff</th>
             <th>Done</th>
             <th>Action</th>
-            <th>Project</th>
             <th>Delegate</th>
             <th>Trash</th>
             <th>Maybe</th>
@@ -28,8 +27,8 @@
             <tr>
                 <td><g:link controller="stuff" action="show" id="${stuff.id}">${stuff.title}</g:link></td>
                 <td><g:link accesskey="O" controller="stuff" action="done" id="${stuff.id}">D<u>o</u>ne</g:link></td>
-                <td><g:link accesskey="A" url="#action_popup"  data-toggle="modal" id="${stuff.id}"><u>A</u>ction</g:link></td>
-                <td><g:link accesskey="P" url="#project_popup"  data-toggle="modal" id="${stuff.id}"><u>P</u>roject</g:link></td>
+                <td><a href="#action_popup" accesskey="A" data-toggle="modal" onclick="$('#stuff_title').text('${stuff.title}');
+                $('input[name=stuff]').val(${stuff.id})">                    <u>A</u>ction</a></td>
                 <td><g:link accesskey="D" url="#delegate_popup"  data-toggle="modal" id="${stuff.id}"><u>D</u>elegate</g:link></td>
                 <td><g:link accesskey="T" controller="stuff" action="trash" id="${stuff.id}"><u>T</u>rash</g:link></td>
                 <td><g:link accesskey="M" controller="stuff" action="maybe" id="${stuff.id}"><u>M</u>aybe</g:link></td>
@@ -39,8 +38,8 @@
             <tr>
                 <td><g:link controller="stuff" action="show" id="${stuff.id}">${stuff.title}</g:link></td>
                 <td><g:link controller="stuff" action="done" id="${stuff.id}">Done</g:link></td>
-                <td><g:link controller="stuff" action="action" id="${stuff.id}">Action</g:link></td>
-                <td><g:link controller="stuff" action="project" id="${stuff.id}">Project</g:link></td>
+                <td><a href="#action_popup" data-toggle="modal" onclick="$('#stuff_title').text('${stuff.title}');
+                $('input[name=stuff]').val(${stuff.id})">Action</a></td>
                 <td><g:link controller="stuff" action="delegate" id="${stuff.id}">Delegate</g:link></td>
                 <td><g:link controller="stuff" action="trash" id="${stuff.id}">Trash</g:link></td>
                 <td><g:link controller="stuff" action="maybe" id="${stuff.id}">Maybe</g:link></td>
@@ -59,8 +58,68 @@
         </g:form>
     </div>
 </div>
-<div id="action_popup" class="modal hide fade">TEST</div>
-<div id="project_popup" class="modal hide fade">TEST</div>
+<div id="action_popup" class="modal hide fade" tabindex="-1">
+
+        <div class="modal-header">
+            <h3>New Action</h3>
+            For : <span id="stuff_title"></span>
+        </div>
+    <g:form controller="stuff" action="action" >
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span7 offset1">
+                    <fieldset>
+                        <g:textField name="stuff" />
+                        <g:textArea id="action_title" name="title" rows="4" value="Next action?"
+                                    onfocus="if (this.value=='Next action?') this.value = ''"
+                                    onblur="if (this.value=='') this.value='Next action?'"
+                                    onsubmit="if (this.value=='Next action?') this.value = ''"
+                        />
+                        <g:textField name="project" value="Project"
+                                     onfocus="if (this.value=='Project') this.value = ''"
+                                     onblur="if (this.value=='') this.value='Project'"
+                                     onsubmit="if (this.value=='Project') this.value = ''"
+                        />
+                    </fieldset>
+                </div>
+                <div class="span4">
+                        <table>
+                        <tr><td><g:textField class="span12" name="context" value="Context"
+                                     onfocus="if (this.value=='Context') this.value = ''"
+                                     onblur="if (this.value=='') this.value='Context'"
+                                     onsubmit="if (this.value=='Context') this.value = ''"
+                        /></td></tr>
+                        <tr><td><g:textField class="span12" name="energy" value="Energy"
+                                     onfocus="if (this.value=='Energy') this.value = ''"
+                                     onblur="if (this.value=='') this.value='Energy'"
+                                     onsubmit="if (this.value=='Energy') this.value = ''"
+                        /></td></tr>
+                        <tr><td><g:textField class="span12" name="time" value="Time"
+                                     onfocus="if (this.value=='Time') this.value = ''"
+                                     onblur="if (this.value=='') this.value='Time'"
+                                     onsubmit="if (this.value=='Time') this.value = ''"
+                        /></td></tr>
+                        <tr><td><g:textField class="span12" name="priority" value="Priority"
+                                     onfocus="if (this.value=='Priority') this.value = ''"
+                                     onblur="if (this.value=='') this.value='Priority'"
+                                     onsubmit="if (this.value=='Priority') this.value = ''"
+                        /></td></tr>
+                        </table>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <fieldset class="text-center">
+                    <g:actionSubmit class="cancel" data-dismiss="modal" area-hidden="true" value="Cancel" />
+                    <g:submitButton name="Save" class="btn btn-primary" />
+                </fieldset>
+            </div>
+        </div>
+
+
+    </g:form>
+</div>
+<div id="project_popup" class="modal hide fade">Store to project</div>
 <div id="delegate_popup" class="modal hide fade">TEST</div>
 
 </body>

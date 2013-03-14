@@ -6,8 +6,4 @@ class InboxController {
         def stuffList = Stuff.findAllByDone(false, params)
         [stuffList: stuffList, total: stuffList.size()]
     }
-
-    def test() {
-
-    }
 }

@@ -22,5 +22,13 @@ class StuffController {
     }
 
     def action = {
+        Stuff.findById(params.stuff).setDone(true)
+        new Action(params).save()
+        redirect (controller: 'inbox', action: 'index')
+    }
+
+    def trash = {
+        Stuff.findById(params.id).delete()
+        redirect(controller: "inbox", action: "index")
     }
 }
