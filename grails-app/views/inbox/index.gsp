@@ -99,11 +99,9 @@
                                      onblur="if (this.value=='') this.value='Time'"
                                      onsubmit="if (this.value=='Time') this.value = ''"
                         /></td></tr>
-                        <tr><td><g:textField class="span12" name="priority" value="Priority"
-                                     onfocus="if (this.value=='Priority') this.value = ''"
-                                     onblur="if (this.value=='') this.value='Priority'"
-                                     onsubmit="if (this.value=='Priority') this.value = ''"
-                        /></td></tr>
+                        <tr><td><g:select class="span12" name="priority"
+                                          from='["High", "Medium", "Low"]' value="Medium" />
+                        </td></tr>
                         </table>
                 </div>
             </div>
@@ -111,7 +109,7 @@
             <div class="modal-footer">
                 <fieldset class="text-center">
                     <g:actionSubmit class="cancel" data-dismiss="modal" area-hidden="true" value="Cancel" />
-                    <g:submitButton name="Save" class="btn btn-primary" />
+                    <g:actionSubmit name="Save" class="btn btn-primary"  value="action"/>
                 </fieldset>
             </div>
         </div>
