@@ -69,7 +69,7 @@
             <div class="row-fluid">
                 <div class="span7 offset1">
                     <fieldset>
-                        <g:textField name="stuff" />
+                        <g:hiddenField name="stuff" />
                         <g:textArea id="action_title" name="title" rows="4" value="Next action?"
                                     onfocus="if (this.value=='Next action?') this.value = ''"
                                     onblur="if (this.value=='') this.value='Next action?'"
