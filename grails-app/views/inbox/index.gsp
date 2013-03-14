@@ -61,6 +61,7 @@
 <div id="action_popup" class="modal hide fade" tabindex="-1">
 
         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h3>New Action</h3>
             For : <span id="stuff_title"></span>
         </div>
@@ -83,33 +84,30 @@
                     </fieldset>
                 </div>
                 <div class="span4">
-                        <table>
-                        <tr><td><g:textField class="span12" name="context" value="Context"
+                        <g:textField class="span12" name="context" value="Context"
                                      onfocus="if (this.value=='Context') this.value = ''"
                                      onblur="if (this.value=='') this.value='Context'"
                                      onsubmit="if (this.value=='Context') this.value = ''"
-                        /></td></tr>
-                        <tr><td><g:textField class="span12" name="energy" value="Energy"
+                        />
+                        <g:textField class="span12" name="energy" value="Energy"
                                      onfocus="if (this.value=='Energy') this.value = ''"
                                      onblur="if (this.value=='') this.value='Energy'"
                                      onsubmit="if (this.value=='Energy') this.value = ''"
-                        /></td></tr>
-                        <tr><td><g:textField class="span12" name="time" value="Time"
+                        />
+                        <g:textField class="span12" name="time" value="Time"
                                      onfocus="if (this.value=='Time') this.value = ''"
                                      onblur="if (this.value=='') this.value='Time'"
                                      onsubmit="if (this.value=='Time') this.value = ''"
-                        /></td></tr>
-                        <tr><td><g:select class="span12" name="priority"
+                        />
+                        <g:select class="span12" name="priority"
                                           from='["High", "Medium", "Low"]' value="Medium" />
-                        </td></tr>
-                        </table>
                 </div>
             </div>
 
             <div class="modal-footer">
                 <fieldset class="text-center">
-                    <g:actionSubmit class="cancel" data-dismiss="modal" area-hidden="true" value="Cancel" />
-                    <g:actionSubmit name="Save" class="btn btn-primary"  value="action"/>
+                    <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                    <g:submitButton name="Save" class="btn btn-primary"  value="action"/>
                 </fieldset>
             </div>
         </div>
