@@ -7,10 +7,6 @@ class StuffController {
 
     }
 
-    def cancel = {
-        redirect(controller: "inbox", action: "index")
-    }
-
     def addStuff = {
         new Stuff(params).save()
         redirect(controller: "inbox", action: "index")
